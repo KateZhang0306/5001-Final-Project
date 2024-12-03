@@ -23,7 +23,7 @@ def load_data():
 
 def add_food(entries):
     food = input("Enter the food name: ").strip().lower()
-    if food in food_data:
+    if food in entries:
         print(f"{food.title()} is in database")
         return
     
@@ -36,3 +36,21 @@ def add_food(entries):
 
     entries[food] = {'calories': calories, 'category': category}
     print(f"{food.title()} added to the food database with {calories} calories in the {category} category.")
+
+
+def search_food(entries):
+    food = input("Enter the food you want to search: ").strip().lower()
+
+    if food in entries:
+        details = entries[food]
+        print(f"{food.title()} has {details['calories']} calories. Category: {details['category']}.")
+
+        update_ask = input("Do you want to update the calories? (yes/no)").strip().lower()
+
+        if update_ask == 'yes':
+            new_cal = int(input("Enter the new calories: "))
+            entries[food]['calories'] = new_cal
+            print(f"{food.title()} updated to {new_cal} calories.")
+    
+    else:
+        print(f"{food.title()} is not in the database.")
