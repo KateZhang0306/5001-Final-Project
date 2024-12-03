@@ -19,3 +19,20 @@ def load_data():
         print("File not found. Starting with empty database.")
 
     return entries
+
+
+def add_food(entries):
+    food = input("Enter the food name: ").strip().lower()
+    if food in food_data:
+        print(f"{food.title()} is in database")
+        return
+    
+    try:
+        calories = int(input("Enter the calories of the food: "))
+        category = input("Enter the category of the food")
+    except ValueError:
+        print("Invalid value. Please enter integer for calories.")
+        return
+
+    entries[food] = {'calories': calories, 'category': category}
+    print(f"{food.title()} added to the food database with {calories} calories in the {category} category.")
