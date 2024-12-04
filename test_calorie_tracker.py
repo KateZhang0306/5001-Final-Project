@@ -1,15 +1,13 @@
 
 import unittest
-import subprocess
 import re
 import sys
 import os
-import json
-from datetime import datetime
+from io import StringIO
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '/Users/katezhang/Documents/NEU/NEU/5001/5001-Final-Project')))
 
-import food_entry, log_tracker 
+import food_entry, log_tracker
 
 common_msg = lambda msg, expected, actual: f"{msg}\nExpected: {expected}\nActual: {actual}"
 
@@ -49,13 +47,21 @@ class TestCalorieTracker(unittest.TestCase):
         food = "apple"
         calories = 95
         category = "fruit"
-        date = '2024-12-03'
+        date = "2024-12-03"
 
-        log_tracker.add_food_to_log(logs, food, calories, category)
 
         expected_logs = {
             date: [{"food": food, "calories": calories, "category": category}]
         }
+
+        inputs = iter(["2024-12-03"]) 
+        def mock_input(prompt):
+            return next(inputs)
+
+        original_input = __builtins__.input
+        __builtins__.input = mock_input
+
+        log_tracker.add_food_to_log(logs, food, calories, category)
 
         self.assertEqual(logs, expected_logs)
 
@@ -74,10 +80,8 @@ class TestCalorieTracker(unittest.TestCase):
 
         original_input = __builtins__.input
         __builtins__.input = mock_input
-        try:
-            food_entry.add_food(entries)
-        finally:
-            __builtins__.input = original_input
+
+        food_entry.add_food(entries)
 
         self.assertEqual(entries, expected_entries)
 
@@ -102,18 +106,13 @@ class TestCalorieTracker(unittest.TestCase):
         def mock_input(prompt):
             return next(inputs)
 
-        from io import StringIO
-        import sys
+
 
         captured_output = StringIO()
         sys.stdout = captured_output
-        original_input = __builtins__.input
         __builtins__.input = mock_input
 
-        try:
-            log_tracker.view_daily_log(logs) 
-        finally:
-            __builtins__.input = original_input
+        log_tracker.view_daily_log(logs) 
 
         output = captured_output.getvalue()
         self.assertEqual(output, expected_output)
