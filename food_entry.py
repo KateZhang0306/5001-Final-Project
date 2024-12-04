@@ -36,6 +36,7 @@ def add_food(entries):
 
     entries[food] = {'calories': calories, 'category': category}
     print(f"{food.title()} added to the food database with {calories} calories in the {category} category.")
+    
 
 
 def search_food(entries):

@@ -30,6 +30,7 @@ def add_food_to_log(logs, food, calories, category):
     
     logs[date].append({"food": food, "calories": calories, "category": category})
     print(f"Added {food.title()} ({category}) with {calories} calories to the log for {date}.")
+    save_log(logs)
 
 
 def view_daily_log(logs):
