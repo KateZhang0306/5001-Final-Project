@@ -17,18 +17,18 @@ def main():
 
         choice = input("Enter your option: ").strip()
 
-        if choice == '1':
+        if choice == "1":
             search_food(food_database)
 
-        elif choice == '2':
+        elif choice == "2":
             food = input("Enter the food name: ").strip().lower()
             if food in food_database:
-                calories = food_database[food]['calories']
-                category = food_database[food]['category']
+                calories = food_database[food]["calories"]
+                category = food_database[food]["category"]
             else:
                 print(f"{food.title()} is not in the database.")
                 add = input("Would you like to add it? (yes/no): ").strip().lower()
-                if add == 'yes':
+                if add == "yes":
                     add_food(food_database)
                     continue
                 else:
@@ -36,18 +36,18 @@ def main():
                     continue
             add_food_to_log(logs, food, calories, category)
 
-        elif choice == '3':
+        elif choice == "3":
             view_daily_log(logs)
 
-        elif choice == '4':
+        elif choice == "4":
             add_food(food_database)
 
-        elif choice == '5':
-            print('Thank you and goodbye!')
+        elif choice == "5":
+            print("Thank you and goodbye!")
             break
 
         else:
-            print('Invalid option, please try again.')
+            print("Invalid option, please try again.")
 
 if __name__ == "__main__":
     main()

@@ -8,13 +8,13 @@ data = "nutrients.csv"
 def load_data():
     entries = {}
     try:
-        with open(data, mode = 'r') as file:
+        with open(data, mode = "r") as file:
             reader = csv.DictReader(file)
             for row in reader:
                 try:
                     entries[row["Food"].lower()] = {
-                        'calories': int(row["Calories"].replace(",", "")),
-                        'category': row["Category"]
+                        "calories": int(row["Calories"].replace(",", "")),
+                        "category": row["Category"]
                     }
                 except:
                     print()
@@ -37,7 +37,7 @@ def add_food(entries):
         print("Invalid value. Please enter integer for calories.")
         return
 
-    entries[food] = {'calories': calories, 'category': category}
+    entries[food] = {"calories": calories, "category": category}
     print(f"{food.title()} added to the food database with {calories} calories in the {category} category.")
 
 
@@ -46,13 +46,13 @@ def search_food(entries):
 
     if food in entries:
         details = entries[food]
-        print(f"{food.title()} has {details['calories']} calories. Category: {details['category']}.")
+        print(f"{food.title()} has {details["calories"]} calories. Category: {details["category"]}.")
 
         update_ask = input("Do you want to update the calories? (yes/no)").strip().lower()
 
-        if update_ask == 'yes':
+        if update_ask == "yes":
             new_cal = int(input("Enter the new calories: "))
-            entries[food]['calories'] = new_cal
+            entries[food]["calories"] = new_cal
             print(f"{food.title()} updated to {new_cal} calories.")
 
     else:

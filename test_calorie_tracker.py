@@ -5,7 +5,7 @@ import sys
 import os
 from io import StringIO
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '/Users/katezhang/Documents/NEU/NEU/5001/5001-Final-Project')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "/Users/katezhang/Documents/NEU/NEU/5001/5001-Final-Project")))
 
 import food_entry, log_tracker
 
@@ -16,7 +16,7 @@ clean_spaces = lambda string: re.sub(r"\s+", "", string)
 class TestCalorieTracker(unittest.TestCase):
 
     def test_search_and_update_food(self) -> None:
-        '''Test search food to database function'''
+        """Test search food to database function"""
 
         entries = {
                 "apple": {"calories": 95, "category": "fruit"},
@@ -42,7 +42,7 @@ class TestCalorieTracker(unittest.TestCase):
 
 
     def test_add_food_to_log(self) -> None:
-        '''Test add food to log function'''
+        """Test add food to log function"""
         logs = {}
         food = "apple"
         calories = 95

@@ -11,14 +11,14 @@ LOG_FILE = "empty_json.json"
 
 def load_log():
     try:
-        with open(LOG_FILE, mode = 'r') as file:
+        with open(LOG_FILE, mode = "r") as file:
             return json.load(file)
     except FileNotFoundError:
         return {}
 
 
 def save_log(logs):
-    with open(LOG_FILE, mode = 'w') as file:
+    with open(LOG_FILE, mode = "w") as file:
         json.dump(logs, file, indent = 4)
 
 
@@ -42,7 +42,7 @@ def view_daily_log(logs):
     print(f"Calories Log for {date}:")
     total = 0
     for entry in logs[date]:
-        print(f"- {entry['food'].title()}: {entry['calories']} calories")
-        total += entry['calories']
+        print(f"- {entry["food"].title()}: {entry["calories"]} calories")
+        total += entry["calories"]
 
     print(f"Total: {total} calories")
