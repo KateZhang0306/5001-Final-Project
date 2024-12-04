@@ -29,7 +29,7 @@ def add_food(entries):
     if food in entries:
         print(f"{food.title()} is in database")
         return
-    
+
     try:
         calories = int(input("Enter the calories of the food: "))
         category = input("Enter the category of the food: ")
@@ -39,7 +39,6 @@ def add_food(entries):
 
     entries[food] = {'calories': calories, 'category': category}
     print(f"{food.title()} added to the food database with {calories} calories in the {category} category.")
-    
 
 
 def search_food(entries):
@@ -55,6 +54,6 @@ def search_food(entries):
             new_cal = int(input("Enter the new calories: "))
             entries[food]['calories'] = new_cal
             print(f"{food.title()} updated to {new_cal} calories.")
-    
+
     else:
         print(f"{food.title()} is not in the database.")

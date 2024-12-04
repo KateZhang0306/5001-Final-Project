@@ -35,13 +35,13 @@ def main():
                     print("Okay then.")
                     continue
             add_food_to_log(logs, food, calories, category)
-        
+
         elif choice == '3':
             view_daily_log(logs)
-        
+
         elif choice == '4':
             add_food(food_database)
-        
+
         elif choice == '5':
             print('Thank you and goodbye!')
             break
