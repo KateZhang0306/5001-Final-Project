@@ -11,10 +11,13 @@ def load_data():
         with open(data, mode = 'r') as file:
             reader = csv.DictReader(file)
             for row in reader:
-                entries[row["Food"].lower()] = {
-                    'calories': int(row["Calories"]),
-                    'category': row["Category"]
-                }
+                try:
+                    entries[row["Food"].lower()] = {
+                        'calories': int(row["Calories"].replace(",", "")),
+                        'category': row["Category"]
+                    }
+                except:
+                    print()
     except FileNotFoundError:
         print("File not found. Starting with empty database.")
 
@@ -29,7 +32,7 @@ def add_food(entries):
     
     try:
         calories = int(input("Enter the calories of the food: "))
-        category = input("Enter the category of the food")
+        category = input("Enter the category of the food: ")
     except ValueError:
         print("Invalid value. Please enter integer for calories.")
         return

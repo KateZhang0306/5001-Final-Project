@@ -1,0 +1,14 @@
+{
+    "20241203": [
+        {
+            "food": "apple",
+            "calories": 95,
+            "category": "Fruit"
+        },
+        {
+            "food": "ice cream",
+            "calories": 250,
+            "category": "Desserts, sweets"
+        }
+    ]
+}
